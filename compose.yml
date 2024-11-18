@@ -1,0 +1,34 @@
+services:
+  frontend:
+    image: frontend_stockhub:latest
+    ports:
+      - 5174:80
+      - 5175:443
+
+  backend:
+    image: backend_stockhub:latest
+    depends_on:
+      - db
+    env_file:
+      - .env.localcompose
+    ports:
+      - 3002:8080
+      - 3003:443
+  db:
+    image: mysql:latest
+    restart: always
+    env_file:
+      - .env.localcompose
+    volumes:
+      - stockhub-db-volume:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5176:8080
+
+volumes:
+  stockhub-db-volume:

@@ -302,7 +302,7 @@ const Header: React.FC<{ onLogin: () => void }> = ({onLogin}) => {
                                                     },
 
                                                     '@media (max-width: 600px)': {
-                                                        marginTop: '400px',
+                                                        marginTop: '330px',
                                                         border: '1px solid white', // Bordure blanche visible sur mobile
                                                         backgroundColor: 'transparent', // Fond transparent par défaut
                                                         borderRadius: '50px',

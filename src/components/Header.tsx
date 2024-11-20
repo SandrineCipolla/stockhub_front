@@ -77,24 +77,40 @@ const Header: React.FC<{ onLogin: () => void }> = ({onLogin}) => {
     return (
         <>
             <StyledBox>
-                <Box sx={{flexGrow: 1, textAlign: 'left'}}>
+                <Box
+                    sx={{
+                        flexGrow: 1,
+                        display: 'flex',
+                        flexDirection: { xs: 'column', sm: 'row' }, // Colonne sur petit écran
+                        alignItems: { xs: 'flex-start', sm: 'center' }, // Alignement dynamique
+                        textAlign: 'left',
+                    }}
+                >
                     <Typography variant="h3">StockHub</Typography>
-                </Box>
-                <Box display="flex" alignItems="center">
-                    {/*  bouton Login/Logout dans le header uniquement sur les écrans larges */}
                     {activeAccount && (
-                        <Typography variant="body2" sx={{marginRight: '10px'}}>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                marginTop: { xs: '8px', sm: '0' }, // Espace en haut uniquement sur petits écrans
+                                marginLeft: { sm: '10px' }, // Espace à gauche sur grands écrans
+                            }}
+                        >
                             Bienvenue {getUsernameWithoutDomain(getUsername(instance.getAllAccounts()))}
                         </Typography>
                     )}
-                    <Box sx={{display: {xs: 'none', sm: 'flex'}}}>
+                </Box>
+                <Box display="flex" alignItems="center">
+                    {/* Boutons Login/Logout */}
+                    <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {activeAccount ? (
-                            <StyledButton onClick={handleLogout} sx={{marginRight: '16px'}}>
-                                <LogoutIcon sx={{marginRight: '4px'}}/>Logout
+                            <StyledButton onClick={handleLogout} sx={{ marginRight: '16px' }}>
+                                <LogoutIcon sx={{ marginRight: '4px' }} />
+                                Logout
                             </StyledButton>
                         ) : (
-                            <StyledButton onClick={onLogin} sx={{marginRight: '16px'}}>
-                                <LoginIcon sx={{marginRight: '4px'}}/>Login
+                            <StyledButton onClick={onLogin} sx={{ marginRight: '16px' }}>
+                                <LoginIcon sx={{ marginRight: '4px' }} />
+                                Login
                             </StyledButton>
                         )}
                     </Box>
@@ -286,7 +302,7 @@ const Header: React.FC<{ onLogin: () => void }> = ({onLogin}) => {
                                                     },
 
                                                     '@media (max-width: 600px)': {
-                                                        marginTop: '450px',
+                                                        marginTop: '400px',
                                                         border: '1px solid white', // Bordure blanche visible sur mobile
                                                         backgroundColor: 'transparent', // Fond transparent par défaut
                                                         borderRadius: '50px',

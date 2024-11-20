@@ -42,18 +42,6 @@ describe("StockItems", () => {
   beforeEach(() => {
     mockFetchStockItems.mockReset();
   });
-  it("should work", () => {
-    expect(true).toBe(true);
-  });
-
-  //   it('affiche "Loading..." lorsque les articles sont en cours de chargement', async () => {
-  //     renderComponent();
-
-  //     const actual = screen.getByText(/Loading.../i);
-
-  //     // Vérifier que le texte "Loading..." est affiché
-  //     expect(actual).toBe(1);
-  //   });
 
   it('affiche "Your stock is empty. Please add items." lorsque le stock est vide', async () => {
     mockFetchStockItems.mockResolvedValueOnce([]);

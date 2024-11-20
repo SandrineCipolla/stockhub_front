@@ -113,11 +113,11 @@ body.light-mode .menu {
 
 @media (max-width: 640px) {
     #root {
-        padding: 1rem; /* Réduit le padding pour mobile */
+        padding: 0.5rem; /* Réduit le padding pour mobile */
     }
 
     h1 {
-        font-size: 2.5em; /* Ajuste la taille des titres sur mobile */
+        font-size: 2em; /* Ajuste la taille des titres sur mobile */
     }
 
     button {

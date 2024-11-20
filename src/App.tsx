@@ -16,6 +16,10 @@ import { ProtectedComponentProps } from "./utils/models.ts";
 import LowStockItemsList from "./components/LowStockItemsList.tsx";
 import ConfirmationPage from "./pages/ConfirmationPage.tsx";
 import ItemConfirmationPage from "./pages/ItemConfirmationPage.tsx";
+import MentionsLegales from "./pages/MentionsLegales.tsx";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite.tsx";
+import ConditionsGenerales from "./pages/ConditionsGenerales.tsx";
+import PolitiqueCookies from "./pages/PolitiqueCookies.tsx";
 
 function ProtectedComponent({ onLogin }: ProtectedComponentProps) {
   const { instance } = useMsal();
@@ -124,6 +128,10 @@ function ProtectedComponent({ onLogin }: ProtectedComponentProps) {
               path="/item-confirmation"
               element={<ItemConfirmationPage />}
             />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+            <Route path="/conditions-generales-d-utilisation" element={<ConditionsGenerales />} />
+            <Route path="/politique-de-cookies" element={<PolitiqueCookies />} />
           </Routes>
         </main>
         <Footer />

@@ -130,6 +130,41 @@ const Header: React.FC<{ onLogin: () => void }> = ({onLogin}) => {
                             <>
                                 <ListItemButton
                                     component={Link}
+                                    to="/"
+                                    sx={{
+                                        color: 'white',
+                                        textDecoration: 'none',
+                                        // touchAction: 'manipulation',
+                                        // userSelect: 'none',
+                                        transition: 'transform 0.2s, box-shadow 0.2s',
+                                        margin: '5px 0',
+
+                                        '&:hover': {
+                                            transform: 'scale(1.05)',
+                                            boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)',
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                        },
+
+                                        '@media (max-width: 600px)': {
+                                            border: '1px solid white',
+                                            backgroundColor: 'transparent',
+                                            borderRadius: '50px',
+                                            '&:active': {
+                                                transform: 'scale(0.95)',
+                                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+                                                color: 'white',
+                                                textDecoration: 'none',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                                borderRadius: '50px',
+                                            },
+                                        },
+                                    }}
+                                >
+                                    <ListItemText primary="Accueil"/>
+                                </ListItemButton>
+                                <ListItemButton
+                                    component={Link}
                                     to="/stocks"
                                     sx={{
                                         color: 'white',
@@ -265,7 +300,7 @@ const Header: React.FC<{ onLogin: () => void }> = ({onLogin}) => {
                                                         },
                                                     },
                                                     '@media (min-width: 601px)': {
-                                                        marginTop: '350px',
+                                                        marginTop: '400px',
                                                     },
                                                 }}
 

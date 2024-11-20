@@ -40,7 +40,7 @@ const LowStockItemsList: React.FC = () => {
 
     return (
 
-        <div className="flex flex-col items-center w-full p-10">
+        <div>
             {/* Bandeau  */}
             <Paper
                 elevation={1}

@@ -9,8 +9,8 @@ export default defineConfig({
     port: parseInt(process.env.VITE_SERVER_PORT),
     host: process.env.VITE_SERVER_NAME,
     https: {
-      key: path.resolve(__dirname, "server.key"),
-      cert: path.resolve(__dirname, "server.cert"),
+      key: path.resolve(__dirname, "localhost.key"),
+      cert: path.resolve(__dirname, "localhost.cert"),
     },
   },
   build: {

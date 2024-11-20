@@ -10,9 +10,11 @@ import HomeIcon from "@mui/icons-material/Home";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
 
-const ItemsList: React.FC = () => {
+export const ItemsList: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const hasFetched = useRef(false);
 
     const fetchDataInner = async () => {
@@ -25,6 +27,9 @@ const ItemsList: React.FC = () => {
             setItems(data);
         } catch (error) {
             console.error('Error in recovering inventory', error);
+            setError('Erreur de récupération des articles');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -32,6 +37,17 @@ const ItemsList: React.FC = () => {
         fetchDataInner();
     }, []);
 
+    if (loading) {
+        return <div>Chargement...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
+    if (items.length === 0) {
+        return <div>Aucun article à afficher</div>;
+    }
 
     return (
         <div>

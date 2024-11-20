@@ -1,4 +1,11 @@
+
+import {useEffect} from "react";
+
 export default function MentionsLegales() {
+        useEffect(() => {
+                document.title = "Mentions Légales - Stockhub";
+        }, []);
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Mentions Légales</h1>

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 
@@ -77,26 +77,4 @@ describe("StockItems", () => {
     await waitFor(() => expect(fetchStockItems).toHaveBeenCalledWith(1)); // 1 est l'ID du stock
   });
 
-  //
-  //     it('met à jour le rendu lorsque les stockItems changent', async () => {
-  //         const mockSetStockItems = vi.fn();
-  //         const stockItemsMock = [
-  //             {ID: 1, LABEL: 'Item 1', QUANTITY: 10, isLowStock: false, STOCK_ID: 1, DESCRIPTION: 'description'},
-  //         ];
-  //
-  //         const {rerender} = renderComponent({stockItems: [], setStockItems: mockSetStockItems});
-  //
-  //         // Vérifier que "Loading..." est initialement affiché
-  //         expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
-  //
-  //         // Mettre à jour les `stockItems` et re-render
-  //         rerender(
-  //             <StockItemsContext.Provider value={{stockItems: stockItemsMock, setStockItems: mockSetStockItems}}>
-  //                 <StockItems ID="1"/>
-  //             </StockItemsContext.Provider>
-  //         );
-  //
-  //         // Vérifier que le contenu est mis à jour avec les nouveaux articles
-  //         expect(screen.getByText('Item 1')).toBeInTheDocument();
-  //     });
 });

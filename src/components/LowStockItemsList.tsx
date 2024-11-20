@@ -85,7 +85,7 @@ const LowStockItemsList: React.FC = () => {
 
                 {/* Titre centré */}
                 <Typography variant="h5" sx={{fontWeight: 'bold', fontSize: '1.5rem'}}>
-                    Articles à faible stock
+                    A acheter
                 </Typography>
 
                 {/* Bouton Ajouter à droite */}
@@ -120,34 +120,6 @@ const LowStockItemsList: React.FC = () => {
                 </Tooltip>
             </Paper>
 
-            {/*{lowStockItems.length === 0 ? (*/}
-            {/*    <p>Aucun article à faible stock trouvé.</p>*/}
-            {/*) : (*/}
-            {/*    <ul className="w-full">*/}
-            {/*        <li className="flex items-center mb-4 p-4 border-b border-gray-300 pl-4 font-bold">*/}
-            {/*            <p className="w-1/3 ml-30">Item</p>*/}
-            {/*            <p className="w-1/3 ml-30">Quantité</p>*/}
-            {/*            <p className="w-1/3 ml-30">Stock</p>*/}
-            {/*        </li>*/}
-            {/*        {lowStockItems.map((item) => (*/}
-            {/*            <li key={item.ID} className="flex items-center mb-4 p-4 border-b border-gray-300 pl-4">*/}
-            {/*                <p className="w-1/3 font-bold text-purple-600 hover:text-violet-300 ml-30">*/}
-            {/*                    <Link to={`/stocks/${item.STOCK_ID}/items/${item.ID}`}*/}
-            {/*                          className="text-purple-600 hover:text-violet-300">*/}
-            {/*                        {item.LABEL}*/}
-            {/*                    </Link>*/}
-            {/*                </p>*/}
-            {/*                <p className="w-1/3 ml-30 ">{item.QUANTITY} en stock</p>*/}
-            {/*                <p className="w-1/3 ml-30">*/}
-            {/*                    <Link to={`/stocks/${item.STOCK_ID}`} className="text-purple-600 hover:text-violet-300">*/}
-            {/*                        {item.stockLabel}*/}
-            {/*                    </Link>*/}
-            {/*                </p>*/}
-            {/*            </li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-
-            {/*)}*/}
             {/* Grille pour les articles à faible stock */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
                 {lowStockItems.length === 0 ? (

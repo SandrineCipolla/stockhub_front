@@ -1,3 +1,4 @@
+
 import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import {addStock} from "../utils/StockAPIClient.ts";
 import Modal from 'react-modal';

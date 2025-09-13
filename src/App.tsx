@@ -149,9 +149,7 @@ function App() {
       ...protectedResources.stockHubApi.scopes.write,
     ],
   };
-  // const handleLogin = () => {
-  //     instance.loginRedirect(signUpSignInFlowRequest);
-  // };
+
   const handleLogin = async () => {
     try {
       await instance.loginRedirect(signUpSignInFlowRequest);
@@ -159,22 +157,6 @@ function App() {
       console.error("Erreur lors de la connexion:", error);
     }
   };
-
-  //   fetch("https://localhost:3000/hello").then((response) => {
-  //     console.info(response);
-  //   });
-
-  //   fetch("https://localhost:3000/hello").then((response) => {
-  //     console.info(response);
-  //   });
-
-  //   fetch("https://localhost/hello").then((response) => {
-  //     console.info(response);
-  //   });
-
-  //   fetch("https://localhost:3000/fromrouter").then((response) => {
-  //     console.info(response);
-  //   });
 
   return (
     <div>

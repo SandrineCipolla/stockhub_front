@@ -21,9 +21,16 @@ const getToken = (): Promise<string | null> => {
     });
 };
 
+function computeVersionPath(version: number) {
+    if(version === 2) {
+        return  import.meta.env.VITE_API_V2;
+    }
+    return import.meta.env.VITE_API_V1;
+}
+
 class ConfigManager {
-    static getApiServerUrl() {
-        return import.meta.env.VITE_API_SERVER_URL;
+    static getApiServerUrl(version: number = 1): string {
+        return import.meta.env.VITE_API_SERVER_URL + computeVersionPath(version);
     }
 
     static async getFetchConfig() {

@@ -15,8 +15,11 @@ export const getToken = (): Promise<string | null> => {
 };
 
 
-export async function getApiConfig(method: string = 'GET', body?: Record<string, unknown>) {
-    const apiUrl = ConfigManager.getApiServerUrl();
+
+
+export async function getApiConfig(method: string = 'GET', version:number = 1, body?: Record<string, unknown>) {
+
+    const apiUrl = ConfigManager.getApiServerUrl(version);
     let config;
 
     switch (method) {

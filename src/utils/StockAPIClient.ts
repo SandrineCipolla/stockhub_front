@@ -3,7 +3,7 @@ import {getApiConfig} from "./utils.ts";
 
 
 async function putFetch(url: string, body: Record<string, unknown>) {
-    const {config} = await getApiConfig('PUT', body);
+    const {config} = await getApiConfig('PUT', 1, body);
 
 
     const response = await fetch(url, config);
@@ -19,7 +19,7 @@ async function putFetch(url: string, body: Record<string, unknown>) {
 export const fetchStocksList = async (): Promise<Stock[]> => {
     try {
 
-        const {apiUrl, config} = await getApiConfig();
+        const {apiUrl, config} = await getApiConfig('GET', 2);
         console.log("Fetching stocks list with config:", config);
 
         const response = await fetch(`${apiUrl}/stocks`, config);
@@ -39,7 +39,7 @@ export const fetchStocksList = async (): Promise<Stock[]> => {
 };
 
 export const fetchStockDetails = async (numericID: number): Promise<StockDetail> => {
-    const {apiUrl, config} = await getApiConfig();
+    const {apiUrl, config} = await getApiConfig('GET', 2);
     const response = await fetch(`${apiUrl}/stocks/${numericID}`, config);
     console.log('Réponse API:', response);
 
@@ -60,7 +60,7 @@ export const fetchStockDetails = async (numericID: number): Promise<StockDetail>
 };
 
 export const fetchStockItems = async (numericID: number): Promise<StockItem[]> => {
-    const {apiUrl, config} = await getApiConfig();
+    const {apiUrl, config} = await getApiConfig('GET', 2);
     const response = await fetch(`${apiUrl}/stocks/${numericID}/items`, config);
 
     if (!response.ok) {
@@ -86,14 +86,14 @@ export const fetchStockItems = async (numericID: number): Promise<StockItem[]> =
 };
 
 export const updateStockItemQuantity = async (stockID: number, itemID: number, quantity: number) => {
-    const {apiUrl} = await getApiConfig();
+    const {apiUrl} = await getApiConfig('PUT', 1);
     const body = {QUANTITY: quantity};
     return putFetch(`${apiUrl}/stocks/${stockID}/items/${itemID}`, body);
 };
 
 export const addStockItem = async (stockID: number, item: { LABEL: string; DESCRIPTION: string; QUANTITY: number }) => {
     const body = {...item, STOCK_ID: stockID};
-    const {apiUrl, config} = await getApiConfig('POST', body);
+    const {apiUrl, config} = await getApiConfig('POST', 1, body);
 
     const response = await fetch(`${apiUrl}/stocks/${stockID}/items`, config);
 
@@ -107,7 +107,7 @@ export const addStockItem = async (stockID: number, item: { LABEL: string; DESCR
 
 export const addStock = async (LABEL: string, DESCRIPTION: string): Promise<Stock> => {
     const body = {LABEL, DESCRIPTION};
-    const {apiUrl, config} = await getApiConfig('POST', body);
+    const {apiUrl, config} = await getApiConfig('POST', 1, body);
 
     console.debug('Sending request with body:', body);
 
@@ -123,7 +123,7 @@ export const addStock = async (LABEL: string, DESCRIPTION: string): Promise<Stoc
 
 export const deleteStock = async (stockID: number) => {
    const body = {STOCK: stockID}
-    const {apiUrl, config} = await getApiConfig('DELETE', body);
+    const {apiUrl, config} = await getApiConfig('DELETE', 1, body);
     const response = await fetch(`${apiUrl}/stocks/${stockID}`, config);
     console.log('deleteStock HTTP response status:', response.status);
     if (!response.ok) {
@@ -136,7 +136,7 @@ export const deleteStock = async (stockID: number) => {
 
 export const deleteStockItem = async (stockID: number, itemID: number) => {
     const body = {ITEM: itemID}
-    const {apiUrl, config} = await getApiConfig('DELETE', body);
+    const {apiUrl, config} = await getApiConfig('DELETE', 1, body);
     console.log('URL de la requête:', `${apiUrl}/stocks/${stockID}/items/${itemID}`);
     console.log('Corps de la requête:', body);
     console.log('Configuration de la requête:', config);
@@ -151,7 +151,7 @@ export const deleteStockItem = async (stockID: number, itemID: number) => {
 };
 
 export const fetchItemsList = async (): Promise<Item[]> => {
-    const {apiUrl, config} = await getApiConfig();
+    const {apiUrl, config} = await getApiConfig('GET', 1);
     const targetUrl = `${apiUrl}/items`;
     const response = await fetch(targetUrl, config);
 
@@ -175,7 +175,7 @@ export const fetchItemsList = async (): Promise<Item[]> => {
 };
 
 export const fetchItemDetails = async (stockID: number, itemID: number): Promise<ItemWithStockLabel> => {
-    const {apiUrl, config} = await getApiConfig();
+    const {apiUrl, config} = await getApiConfig('GET', 1);
     const response = await fetch(`${apiUrl}/stocks/${stockID}/items/${itemID}`, config);
 
     if (!response.ok) {
@@ -191,7 +191,7 @@ export const fetchItemDetails = async (stockID: number, itemID: number): Promise
 };
 
 export const fetchLowStockItems = async():Promise<Item[]> =>{
-    const {apiUrl, config} = await getApiConfig();
+    const {apiUrl, config} = await getApiConfig('GET', 1);
     const response = await fetch(`${apiUrl}/low-stock-items`, config);
 
     if (!response.ok) {

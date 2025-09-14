@@ -40,8 +40,9 @@ class ConfigManager {
             headers: {
                 [AUTHORIZATION]: `Bearer ${token}`,
                 [CONTENT_TYPE]: APPLICATION_JSON,
-                [CREDENTIALS]: INCLUDE,
+
             },
+            [CREDENTIALS]: INCLUDE,
         };
     }
 
@@ -52,8 +53,9 @@ class ConfigManager {
             headers: {
                 [AUTHORIZATION]: `Bearer ${token}`,
                 [CONTENT_TYPE]: APPLICATION_JSON,
-                [CREDENTIALS]: INCLUDE,
+
             },
+            [CREDENTIALS]: INCLUDE,
             body: JSON.stringify(body),
         };
     }
@@ -65,8 +67,9 @@ class ConfigManager {
             headers: {
                 [AUTHORIZATION]: `Bearer ${token}`,
                 [CONTENT_TYPE]: APPLICATION_JSON,
-                [CREDENTIALS]: INCLUDE,
+
             },
+            [CREDENTIALS]: INCLUDE,
             body: JSON.stringify(body),
         };
     }
@@ -78,8 +81,9 @@ class ConfigManager {
             headers: {
                 [AUTHORIZATION]: `Bearer ${token}`,
                 [CONTENT_TYPE]: APPLICATION_JSON,
-                [CREDENTIALS]: INCLUDE,
+
             },
+            [CREDENTIALS]: INCLUDE,
             body: JSON.stringify(body),
         };
     }

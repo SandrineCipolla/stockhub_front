@@ -3,7 +3,7 @@ import { Configuration, LogLevel } from '@azure/msal-browser';
 export const b2cPolicies = {
     names: {
         signUpSignIn: 'B2C_1_signupsignin',
-        // forgotPassword: 'B2C_1_reset_v3',
+        forgotPassword: "B2C_1_passwordreset",
         // editProfile: 'B2C_1_edit_profile_v2',
     },
     authorities: {
@@ -11,9 +11,10 @@ export const b2cPolicies = {
            authority: 'https://stockhubb2c.b2clogin.com/stockhubb2c.onmicrosoft.com/B2C_1_signupsignin',
             //authority: "https://stockhubb2c.b2clogin.com/tfp/2b9bbbf5-4706-4eed-86a7-d55a5094b647/B2C_1_signupsignin",
         },
-        // forgotPassword: {
-        //     authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/B2C_1_reset_v3',
-        // },
+        forgotPassword: {
+            authority:
+                "https://stockhubb2c.b2clogin.com/stockhubb2c.onmicrosoft.com/B2C_1_passwordreset",
+        },
         // editProfile: {
         //     authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile_v2',
         // },

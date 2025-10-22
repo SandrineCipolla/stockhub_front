@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {AuthenticationResult, EventType, PublicClientApplication} from "@azure/msal-browser";
-import {msalConfig} from "./authConfig.ts";
+import {AuthenticationResult, AuthError, EventType, PublicClientApplication} from "@azure/msal-browser";
+import {msalConfig,b2cPolicies,loginRequest} from "./authConfig.ts";
 import {MsalProvider} from "@azure/msal-react";
 import App from "./App.tsx";
 import {ThemeProvider, createTheme } from "@mui/material";
@@ -16,7 +16,28 @@ if (!msalInstance.getActiveAccount() && msalInstance.getAllAccounts().length > 0
 msalInstance.addEventCallback((event) => {
 
     console.debug('Event received:', event.eventType);
+// 🧩 Cas particulier : utilisateur a cliqué sur "Forgot password"
+    if (event.eventType === EventType.LOGIN_FAILURE && event.error) {
+        const error = event.error as AuthError;
+        const message = error.errorMessage || error.message|| "";
 
+        if (message.includes("AADB2C90118")) {
+            console.warn(
+                "🧩 Forgot Password triggered → redirecting to password reset flow..."
+            );
+
+            // Redirige vers le user flow "password reset"
+            msalInstance.loginRedirect({
+                authority: b2cPolicies.authorities.forgotPassword.authority,
+                scopes: loginRequest.scopes,
+            });
+            return;
+        }
+
+        console.error("Login failure:", event.error);
+    }
+
+    // ✅ Authentification réussie → setActiveAccount
     if (
         (event.eventType === EventType.LOGIN_SUCCESS ||
             event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS ||
